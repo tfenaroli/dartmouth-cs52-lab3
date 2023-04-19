@@ -33,9 +33,7 @@ export default function Note({
 
   return (
     <Draggable
-      bounds={{
-        left: 0, right: 400, top: 0, bottom: 400,
-      }}
+      bounds=".notesWrapper"
       handle=".drag"
       grid={[10, 10]}
     //   defaultPosition={{ x: 200, y: 20 }}

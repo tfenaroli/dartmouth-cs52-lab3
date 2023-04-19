@@ -1,5 +1,17 @@
-body, html {
-	font-family: "Roboto", sans-serif;
+html, body, #main {
+	height: 100%;
+}
+
+.appWrapper {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.notesWrapper {
+	flex: 1;
+	background-color: rgb(229, 247, 255);
+	position: relative;
 }
 
 // everything in note
