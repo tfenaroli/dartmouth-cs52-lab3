@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function SearchBar({ handleCreate }) {
+export default function InputBar({ handleCreate }) {
   const [text, setText] = useState('');
   return (
     <div className="input-group w-50 mx-auto">

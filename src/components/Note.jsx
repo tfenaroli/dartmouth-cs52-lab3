@@ -36,7 +36,6 @@ export default function Note({
       bounds=".notesWrapper"
       handle=".drag"
       grid={[10, 10]}
-    //   defaultPosition={{ x: 200, y: 20 }}
       position={{
         x, y,
       }}

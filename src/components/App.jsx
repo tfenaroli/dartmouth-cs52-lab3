@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Note from './Note';
-import SearchBar from './SearchBar';
+import InputBar from './InputBar';
 import * as db from '../services/datastore';
 
 export default function App() {
@@ -46,7 +46,7 @@ export default function App() {
   return (
     <div className="appWrapper">
       <h1 className="my-4 py-3 text-center">Notes App!</h1>
-      <SearchBar handleCreate={handleCreate} />
+      <InputBar handleCreate={handleCreate} />
       <div className="notesWrapper">
         {notes && Object.entries(notes).map(([id, note]) => {
           return (
