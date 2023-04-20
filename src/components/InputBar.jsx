@@ -3,12 +3,11 @@ import React, { useState } from 'react';
 export default function InputBar({ handleCreate, isLoggedIn }) {
   const [text, setText] = useState('');
   return (
-    <div className="input-group w-50 mx-auto">
+    <div className="input-group w-50">
       <input
         disabled={!isLoggedIn}
         type="text"
         onChange={(e) => {
-          console.log(e.target.value);
           setText(e.target.value);
         }}
         value={text}

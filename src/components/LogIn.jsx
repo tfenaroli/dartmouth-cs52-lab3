@@ -12,9 +12,9 @@ export default function LogIn() {
         console.log('successfully registered');
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         console.log(`error registering: ${errorMessage}`);
+        alert(errorMessage);
       });
   };
 
@@ -24,34 +24,34 @@ export default function LogIn() {
         console.log('successfully signed in');
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         console.log(`error signing in: ${errorMessage}`);
+        alert(errorMessage);
       });
   };
 
   return (
-    <div>
-      <p>Log in!</p>
+    <div className="border border-danger d-flex flex-column align-items-center">
       <input
         type="text"
         onChange={(e) => {
           setEmail(e.target.value);
         }}
         value={email}
-        className="form-control"
-        aria-describedby="button-addon2"
+        className="form-control w-25 mt-5"
+        placeholder="Username"
       />
       <input
-        type="text"
+        type="password"
         onChange={(e) => {
           setPassword(e.target.value);
         }}
         value={password}
-        className="form-control"
-        aria-describedby="button-addon2"
+        className="form-control w-25 mt-3"
+        placeholder="Password"
       />
-      <button type="button" onClick={register}>sign in</button>
+      <button type="button" className="btn btn-primary mt-4" onClick={signIn}>Sign In</button>
+      <button type="button" className="btn btn-outline-primary mt-4" onClick={register}>Register</button>
     </div>
   );
 }
