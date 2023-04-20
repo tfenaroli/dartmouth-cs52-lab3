@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import Note from './Note';
 import InputBar from './InputBar';
 import * as db from '../services/datastore';
+import LogIn from './LogIn';
 
 export default function App() {
   const [notes, setNotes] = useState({
@@ -12,6 +14,16 @@ export default function App() {
       y: 200,
       zIndex: 10,
     },
+  });
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  onAuthStateChanged(db.auth, (user) => {
+    if (user) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
   });
 
   const handleDelete = (id) => {
@@ -31,7 +43,6 @@ export default function App() {
   };
 
   const handleEdit = (id, updatedFields) => {
-    console.log(`editing note with id: ${id}`);
     db.updateNote(id, updatedFields);
   };
 
@@ -46,14 +57,25 @@ export default function App() {
   return (
     <div className="appWrapper">
       <h1 className="my-4 py-3 text-center">Notes App!</h1>
-      <InputBar handleCreate={handleCreate} />
-      <div className="notesWrapper">
-        {notes && Object.entries(notes).map(([id, note]) => {
-          return (
-            <Note key={id} id={id} title={note.title} text={note.text} x={note.x} y={note.y} handleDelete={handleDelete} handleEdit={handleEdit} />
-          );
-        })}
-      </div>
+      <InputBar handleCreate={handleCreate} isLoggedIn={isLoggedIn} />
+      <button type="button"
+        onClick={() => {
+          console.log('signing out');
+          signOut(db.auth);
+        }}
+      >sign out
+      </button>
+      {isLoggedIn ? (
+        <div className="notesWrapper">
+          {notes && Object.entries(notes).map(([id, note]) => {
+            return (
+              <Note key={id} id={id} title={note.title} text={note.text} x={note.x} y={note.y} handleDelete={handleDelete} handleEdit={handleEdit} />
+            );
+          })}
+        </div>
+      ) : (
+        <LogIn />
+      )}
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
 import {
   getDatabase, ref, child, onValue, push, update, remove,
 } from 'firebase/database';
@@ -19,6 +20,9 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Realtime Database and get a reference to the service
 const database = getDatabase(app);
+
+// Initialize Firebase Authentication and get a reference to the service
+export const auth = getAuth(app);
 
 export function fetchNotes(updateNotes) {
   onValue(ref(database, 'notes'), (snapshot) => {
