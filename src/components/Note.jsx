@@ -83,9 +83,7 @@ export default function Note({
             </div>
           </div>
         </div>
-        <div style={{ borderStyle: 'dashed' }}>
-          {renderBody()}
-        </div>
+        {renderBody()}
       </div>
     </Draggable>
   );

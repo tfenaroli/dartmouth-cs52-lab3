@@ -6,15 +6,7 @@ import LogIn from './LogIn';
 import NotePad from './NotePad';
 
 export default function App() {
-  const [notes, setNotes] = useState({
-    0: {
-      title: 'loading note',
-      text: '![](http://i.giphy.com/gyRWkLSQVqlPi.gif)',
-      x: 900,
-      y: 200,
-      zIndex: 10,
-    },
-  });
+  const [notes, setNotes] = useState(null);
 
   const [userEmail, setUserEmail] = useState('');
 
@@ -24,9 +16,9 @@ export default function App() {
   };
 
   const handleCreate = (title, text) => {
-    console.log(`creating note with text: ${text}`);
+    console.log(`creating note with title ${title} and text ${text}`);
     db.createNote({
-      title: 'Title',
+      title,
       text,
       x: 0,
       y: 0,
@@ -59,12 +51,12 @@ export default function App() {
 
   return (
     <div className="h-100 d-flex flex-column">
-      <div className="border border-primary d-flex flex-column align-items-center">
+      <div className="d-flex flex-column align-items-center">
         <h1 className="fs-3 my-4">React Notes! {userEmail && `(${userEmail})`}</h1>
         <InputBar handleCreate={handleCreate} isLoggedIn={userEmail} />
         {userEmail && (
         <button
-          className="btn btn-primary my-4"
+          className="btn btn-outline-primary my-4"
           type="button"
           onClick={() => {
             console.log('signing out');

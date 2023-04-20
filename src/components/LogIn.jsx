@@ -31,7 +31,7 @@ export default function LogIn() {
   };
 
   return (
-    <div className="border border-danger d-flex flex-column align-items-center">
+    <div className="d-flex flex-column align-items-center">
       <input
         type="text"
         onChange={(e) => {
