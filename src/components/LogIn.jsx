@@ -39,7 +39,7 @@ export default function LogIn() {
         }}
         value={email}
         className="form-control w-25 mt-5"
-        placeholder="Username"
+        placeholder="Email"
       />
       <input
         type="password"
