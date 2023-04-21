@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
 export default function Note({
-  id, title, text, x, y, zIndex, handleDelete, handleEdit,
+  id, title, text, x, y, zIndex, handleDelete, handleEdit, color,
 }) {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -41,7 +41,7 @@ export default function Note({
       }}
       onDrag={handleDrag}
     >
-      <div id="note">
+      <div id="note" style={{ backgroundColor: color }}>
         <div className="d-flex mb-3 justify-content-between">
           <h2 className="my-0 ms-0 me-4">{title}</h2>
           <div className="d-flex">

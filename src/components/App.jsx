@@ -15,11 +15,12 @@ export default function App() {
     db.deleteNote(id);
   };
 
-  const handleCreate = (title, text) => {
-    console.log(`creating note with title ${title} and text ${text}`);
+  const handleCreate = (title, text, color) => {
+    console.log(`creating note with title ${title}, text ${text}, and color ${color}`);
     db.createNote({
       title,
       text,
+      color,
       x: 0,
       y: 0,
       zIndex: 1,
